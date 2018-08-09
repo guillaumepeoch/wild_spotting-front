@@ -22,11 +22,16 @@ class Home extends Component {
     })
   }
 
+  clicked(speciesName){
+    console.log(speciesName);
+  }
+
   render() {
     return (
       <div>
         <MyMapComponent
           markers={this.state.locations}
+          clickMarker={this.clicked}
         />
       </div>
     );

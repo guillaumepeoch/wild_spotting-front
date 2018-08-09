@@ -11,18 +11,32 @@ const MyMapComponent = compose(
   }),
   withScriptjs,
   withGoogleMap
-)((props) =>
-  <GoogleMap
+)(function(props){
+  console.log(props);
+  return <GoogleMap
     defaultZoom={5}
     defaultCenter={{ lat: 53, lng: -119 }}
   >
-    { getMarkers(props.markers) }
+    { getMarkers(props.markers, props.clickMarker)}
   </GoogleMap>
-)
+})
 
-const getMarkers = function(markers){
+const getMarkers = function(markers,clicked){
   return markers.map(function(marker,i){
-    return <Marker key={i} position={{lat:marker.encounter_lat, lng:marker.encounter_lng}} />
+    return <Marker
+      key={i}
+      position={{lat:marker.encounter_lat, lng:marker.encounter_lng}}
+      icon={{
+        url:'./bear.png',
+        scaledSize:{
+          width: 25,
+          height: 25
+        }
+      }}
+      onClick={function(){
+        return clicked(marker.species_name)
+      }}
+      />
   });
 }
 
