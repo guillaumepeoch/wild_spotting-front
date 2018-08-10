@@ -21,6 +21,5 @@ const MyMapComponent = compose(
     <CustomMarker markers={props.markers} clicked={props.clickMarker} />
   </GoogleMap>)
 })
-// AIzaSyCfHpMqBP1f10sqeHBm2RTsYUzW2A536jA
 
 export default MyMapComponent;

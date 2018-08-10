@@ -1,6 +1,5 @@
 .container {
   display: flex;
-  background-color: green;
 }
 
 .inner {
@@ -17,5 +16,5 @@
 }
 
 .elementHello {
-  background: green;
+  flex:1;
 }
