@@ -1,7 +1,7 @@
 import React from "react";
 import { compose, withProps } from "recompose";
 import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
-import CustomMarker from './CustomMarker';
+import CustomMarker from './custom_marker/CustomMarker';
 
 const MyMapComponent = compose(
   withProps({

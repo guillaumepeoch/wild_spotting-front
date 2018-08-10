@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import MyMapComponent from '../MyMapComponent';
-import FilterBoard from '../filter_board/FilterBoard';
+import MyMapComponent from '../widgets/map/Map';
+import FilterBoard from '../widgets/filter_board/FilterBoard';
 import styles from './styles.css';
 
 class Home extends Component {
