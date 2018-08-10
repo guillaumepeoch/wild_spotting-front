@@ -18,7 +18,10 @@ const MyMapComponent = compose(
     defaultZoom={5}
     defaultCenter={{ lat: 53, lng: -119 }}
   >
-    <CustomMarker markers={props.markers} clicked={props.clickMarker} />
+    <CustomMarker
+      markers={props.markers}
+      clicked={props.clickMarker}
+    />
   </GoogleMap>)
 })
 

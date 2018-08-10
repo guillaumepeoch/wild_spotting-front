@@ -28,6 +28,24 @@ class Home extends Component {
     console.log(speciesName);
   }
 
+  filterSpecies = (species_id) => {
+    fetch('http://localhost:3004/locations')
+    .then(function(res){
+      return res.json();
+    })
+    .then((allLocations)=>{
+      const locations = allLocations.filter(function(location){
+        return location.encounter_species_id == species_id;
+      })
+      this.setState({locations});
+    })
+    .catch(function(error){
+      console.error(error);
+    })
+
+
+  }
+
   render() {
     return (
       <div className={styles.container}>
@@ -40,7 +58,9 @@ class Home extends Component {
             </div>
           </div>
           <div className={styles.elementHello} >
-            <FilterBoard />
+            <FilterBoard
+              speciesChange={this.filterSpecies}
+            />
           </div>
       </div>
     );
