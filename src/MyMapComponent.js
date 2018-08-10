@@ -1,6 +1,6 @@
 import React from "react";
 import { compose, withProps } from "recompose";
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
 import CustomMarker from './CustomMarker';
 
 const MyMapComponent = compose(
@@ -13,34 +13,14 @@ const MyMapComponent = compose(
   withScriptjs,
   withGoogleMap
 )(function(props){
-  return <GoogleMap
+  return(
+  <GoogleMap
     defaultZoom={5}
     defaultCenter={{ lat: 53, lng: -119 }}
   >
     <CustomMarker markers={props.markers} clicked={props.clickMarker} />
-  </GoogleMap>
+  </GoogleMap>)
 })
-
-//   { getMarkers(props.markers, props.clickMarker)}
-const getMarkers = function(markers,clicked){
-  return markers.map(function(marker,i){
-    return <Marker
-      key={i}
-      position={{lat:marker.encounter_lat, lng:marker.encounter_lng}}
-      icon={{
-        url:'./bear.png',
-        scaledSize:{
-          width: 25,
-          height: 25
-        }
-      }}
-      onClick={function(){
-        return clicked(marker.species_name)
-      }}
-      />
-  });
-}
-
 // AIzaSyCfHpMqBP1f10sqeHBm2RTsYUzW2A536jA
 
 export default MyMapComponent;
