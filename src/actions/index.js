@@ -26,7 +26,7 @@ export function LocationsByIdRequest(species_id){
     return res.json();
   })
   .then(function(r){
-    return r.map.filter(function(location){
+    return r.filter(function(location){
       return location.encounter_species_id == species_id;
     })
   })

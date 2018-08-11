@@ -14,7 +14,6 @@ class Home extends Component {
 
   componentWillMount(){
     this.props.getLocations();
-    //console.log(this.props);
   }
 
   clicked(speciesName){
@@ -22,25 +21,10 @@ class Home extends Component {
   }
 
   filterSpecies = (species_id) => {
-    fetch('http://localhost:3004/locations')
-    .then(function(res){
-      return res.json();
-    })
-    .then((allLocations)=>{
-      const locations = allLocations.filter(function(location){
-        return location.encounter_species_id == species_id;
-      })
-      this.setState({locations});
-    })
-    .catch(function(error){
-      console.error(error);
-    })
-
-
+    this.props.getLocationsById(species_id);
   }
 
   render() {
-    console.log(this);
     return (
       <div className={styles.container}>
           <div className={styles.inner}>
