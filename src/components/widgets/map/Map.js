@@ -25,4 +25,9 @@ const MyMapComponent = compose(
   </GoogleMap>)
 })
 
+
+MyMapComponent.defaultProps = {
+  markers:[]
+}
+
 export default MyMapComponent;

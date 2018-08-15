@@ -3,7 +3,7 @@ import { Marker } from 'react-google-maps';
 
 const CustomMarker = function({markers, clicked}){
 
-  return markers.map(function(marker,i){
+  return markers ? markers.map(function(marker,i){
     return <Marker
       key={i}
       position={{lat:marker.encounter_lat, lng:marker.encounter_lng}}
@@ -15,10 +15,10 @@ const CustomMarker = function({markers, clicked}){
         }
       }}
       onClick={function(){
-        return clicked(marker.species_name)
+        return clicked(marker.encounter_id)
       }}
       />
-  });
+  }) : null;
 }
 
 export default CustomMarker;

@@ -15,6 +15,12 @@ const rootReducer = combineReducers({
               locations:action.payload
             }
           break;
+        case 'LOCATION':
+          return {
+            ...prevState,
+            location:action.payload
+          }
+          break;
       default:
         return prevState;
     }

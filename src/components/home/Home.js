@@ -2,22 +2,23 @@ import React, { Component } from 'react';
 import MyMapComponent from '../widgets/map/Map';
 import FilterBoard from '../widgets/filter_board/FilterBoard';
 import styles from './styles.css';
-import { LocationsRequest, LocationsByIdRequest } from '../../actions';
+import { LocationsRequest, LocationsByIdRequest, LocationRequest } from '../../actions';
 
 import { connect } from 'react-redux';
 
 class Home extends Component {
 
   state = {
-    locations:[]
+    locations:[],
+    location:null
   }
 
   componentWillMount(){
     this.props.getLocations();
   }
 
-  clicked(speciesName){
-    console.log(speciesName);
+  clicked = (encounter_id) => {
+    this.props.getLocation(encounter_id);
   }
 
   filterSpecies = (species_id) => {
@@ -25,22 +26,30 @@ class Home extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
-      <div className={styles.container}>
-          <div className={styles.inner}>
-            <div className={styles.innerinner}>
-              <MyMapComponent
-                markers={this.props.data.locations }
-                clickMarker={this.clicked}
+      <div>
+        <div className={styles.container}>
+            <div className={styles.inner}>
+              <div className={styles.innerinner}>
+                <MyMapComponent
+                  markers={this.props.data.locations}
+                  clickMarker={this.clicked}
+                />
+              </div>
+            </div>
+            <div className={styles.elementHello} >
+              <FilterBoard
+                speciesChange={this.filterSpecies}
               />
             </div>
-          </div>
-          <div className={styles.elementHello} >
-            <FilterBoard
-              speciesChange={this.filterSpecies}
-            />
-          </div>
+        </div>
+        <div>
+          <CardInfo />
+        </div>
       </div>
+
+      <
     );
   }
 
@@ -60,7 +69,9 @@ const mapDispatchToProps = function(dispatch){
     getLocationsById:function(species_id){
       dispatch(LocationsByIdRequest(species_id))
     },
-
+    getLocation:function(encounter_id){
+      dispatch(LocationRequest(encounter_id))
+    }
   }
 }
 
