@@ -1,0 +1,13 @@
+.container {
+  text-align:center;
+  border-right: 4px solid black;
+  border-bottom: 4px solid black;
+  border-top: 4px solid black;
+  height: 300px;
+}
+
+select {
+  margin-top: 15px;
+  background:SeaGreen;
+  width: 90%;
+}

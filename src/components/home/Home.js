@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import MyMapComponent from '../widgets/map/Map';
 import FilterBoard from '../widgets/filter_board/FilterBoard';
+import CardInfo from '../widgets/card_info/CardInfo';
 import styles from './styles.css';
 import { LocationsRequest, LocationsByIdRequest, LocationRequest } from '../../actions';
-
 import { connect } from 'react-redux';
 
 class Home extends Component {
@@ -26,9 +26,9 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
+        { this.props.data.location ? <CardInfo location={this.props.data.location} /> : null }
         <div className={styles.container}>
             <div className={styles.inner}>
               <div className={styles.innerinner}>
@@ -44,13 +44,8 @@ class Home extends Component {
               />
             </div>
         </div>
-        <div>
-          <CardInfo />
-        </div>
       </div>
-
-      <
-    );
+    )
   }
 
 }

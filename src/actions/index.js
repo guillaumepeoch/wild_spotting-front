@@ -25,7 +25,6 @@ export function LocationRequest(encounter_id){
   Object.keys(params).forEach(function(key){url.searchParams.append(key, params[key])});
   const LocReq = fetch(url)
   .then(function(res){
-    console.log(res);
     return res.json();
   })
   .then(function(r){

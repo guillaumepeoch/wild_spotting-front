@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './styles.css';
 
 class FilterBoard extends Component {
 
@@ -27,23 +28,26 @@ class FilterBoard extends Component {
 
   getDropdown(){
     return(
-      <select onChange={(e)=>this.speciesSelected(e)}>
-        {this.state.species.map((specie,i)=>(
-          <option
-            key={i}
-            value={specie.species_id}
-          >
-            {specie.species_name}
-          </option>
-        ))}
-      </select>
+      <div className={styles.container}>
+        <select onChange={(e)=>this.speciesSelected(e)}>
+          <option selected> Select specie </option>
+          {this.state.species.map((specie,i)=>(
+            <option
+              key={i}
+              value={specie.species_id}
+            >
+              {specie.species_name}
+            </option>
+          ))}
+        </select>
+      </div>
     );
   }
 
   render() {
     return (
       <div>
-        {this.getDropdown()};
+        {this.getDropdown()}
       </div>
     );
   }
