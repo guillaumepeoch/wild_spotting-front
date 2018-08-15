@@ -27,18 +27,16 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        { this.props.data.location ? <CardInfo location={this.props.data.location} /> : null }
-        <div className={styles.container}>
-            <div className={styles.inner}>
-              <div className={styles.innerinner}>
-                <MyMapComponent
-                  markers={this.props.data.locations}
-                  clickMarker={this.clicked}
-                />
-              </div>
+      <div className={styles.container}>
+        { this.props.data.location ? <CardInfo className={styles.cardinfo} location={this.props.data.location} /> : null }
+        <div className={styles.mapfiltercontainer}>
+            <div className={styles.map}>
+              <MyMapComponent
+                markers={this.props.data.locations}
+                clickMarker={this.clicked}
+              />
             </div>
-            <div className={styles.elementHello} >
+            <div className={styles.filter} >
               <FilterBoard
                 speciesChange={this.filterSpecies}
               />

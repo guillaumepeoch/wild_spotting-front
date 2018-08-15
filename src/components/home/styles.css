@@ -1,20 +1,23 @@
 .container {
   display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.inner {
+.cardinfo {
+  flex:1;
+}
+
+.mapfiltercontainer {
+  flex:2;
+  display: flex;
+}
+
+.map {
   position: relative;
   flex:2;
 }
 
-.innerinner {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-}
-
-.elementHello {
+.filter {
   flex:1;
 }
