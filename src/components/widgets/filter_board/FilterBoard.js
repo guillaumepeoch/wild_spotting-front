@@ -29,8 +29,8 @@ class FilterBoard extends Component {
   getDropdown(){
     return(
       <div className={styles.container}>
-        <select onChange={(e)=>this.speciesSelected(e)}>
-          <option selected> Select specie </option>
+        <select defaultValue='selectspecies' onChange={(e)=>this.speciesSelected(e)}>
+          <option value='selectspecies'> Select specie </option>
           {this.state.species.map((specie,i)=>(
             <option
               key={i}

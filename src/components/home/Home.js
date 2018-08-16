@@ -25,15 +25,45 @@ class Home extends Component {
     this.props.getLocationsById(species_id);
   }
 
+  getCenterMap = () => {
+    if(this.props.data.location){
+      return {
+        lat:this.props.data.location.encounter_lat,
+        lng:this.props.data.location.encounter_lng
+      }
+    } else {
+      return {
+        lat:53,
+        lng:-119
+      }
+    }
+  }
+
+  getZoom = () => {
+    if(this.props.data.location){
+      return 10;
+    } else {
+      return 5;
+    }
+  }
+
   render() {
     return (
       <div className={styles.container}>
-        { this.props.data.location ? <CardInfo className={styles.cardinfo} location={this.props.data.location} /> : null }
+        { this.props.data.location ?
+          <CardInfo
+            className={styles.cardinfo}
+            location={this.props.data.location}
+          /> :
+          null
+        }
         <div className={styles.mapfiltercontainer}>
             <div className={styles.map}>
               <MyMapComponent
                 markers={this.props.data.locations}
                 clickMarker={this.clicked}
+                center={this.getCenterMap()}
+                zoom={this.getZoom()}
               />
             </div>
             <div className={styles.filter} >

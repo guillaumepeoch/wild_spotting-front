@@ -16,8 +16,8 @@ const MyMapComponent = compose(
 )(function(props){
   return(
     <GoogleMap
-      defaultZoom={5}
-      defaultCenter={{ lat: 53, lng: -119 }}
+      zoom={5}
+      center={props.center}
     >
       <CustomMarker
         markers={props.markers}
