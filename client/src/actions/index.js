@@ -2,11 +2,12 @@ const URLdev = "http://localhost:3123";
 //const { Url } = require('url');
 
 export function LocationsRequest(){
-  const LocReq = fetch(`${URLdev}/locations`)
+  const LocReq = fetch(`${URLdev}/encounters`)
   .then(function(res){
     return res.json();
   })
   .then(function(r){
+    console.log(r)
     return r;
   })
   .catch(function(error){
@@ -20,7 +21,7 @@ export function LocationsRequest(){
 }
 
 export function LocationRequest(encounter_id){
-  let url = new URL(`${URLdev}/locations`)
+  let url = new URL(`${URLdev}/encounters`)
   const params = { encounter_id };
   Object.keys(params).forEach(function(key){url.searchParams.append(key, params[key])});
   const LocReq = fetch(url)
@@ -41,7 +42,7 @@ export function LocationRequest(encounter_id){
 }
 
 export function LocationsByIdRequest(species_id){
-  const LocReqById = fetch(`${URLdev}/locations`)
+  const LocReqById = fetch(`${URLdev}/encounters`)
   .then(function(res){
     return res.json();
   })
