@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './styles.css';
+import axios from 'axios';
 
 class FilterBoard extends Component {
 
@@ -8,13 +9,10 @@ class FilterBoard extends Component {
   }
 
   componentWillMount(){
-    fetch('http://localhost:3004/species')
-    .then(function(res){
-        return res.json();
-    })
-    .then((r)=>{
+    axios('http://localhost:3123/species')
+    .then((res)=>{
       this.setState({
-        species:r
+        species:res.data
       })
     })
     .catch(function(er){

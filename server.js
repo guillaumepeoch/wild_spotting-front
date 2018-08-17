@@ -34,14 +34,46 @@ const encounterSchema = mongoose.Schema({
 const Encounter = mongoose.model('Encounter',encounterSchema);
 
 
+
+const specieSchema = mongoose.Schema({
+    "species_id": Number,
+    "species_name": String,
+    "species_mapicon_id": Number,
+    "species_image_id": Number,
+    "media_name_icon": String,
+    "media_name_info": String
+});
+
+const Species = mongoose.model('Species',specieSchema);
+
+
 /* REST ENDPOINTS */
 app.get('/encounters',function(req,res){
-  console.log('Encounters Request ');
-  Encounter.find(function(err,doc){
+  if(req.query.species_id){
+    console.log(req.query.species_id);
+    Encounter.find({ encounter_species_id : req.query.species_id },function(err,doc){
+      if(err) console.error(err);
+      res.json(doc);
+    });
+  } else if(req.query.encounter_id){
+    Encounter.find({ encounter_id : req.query.encounter_id },function(err,doc){
+      if(err) console.error(err);
+      res.json(doc);
+    });
+  } else {
+    Encounter.find(function(err,doc){
+      if(err) console.error(err);
+      res.json(doc);
+    });
+  }
+});
+
+app.get('/species',function(req,res){
+  Species.find(function(err,doc){
     if(err) console.error(err);
     res.json(doc);
   });
-});
+})
 
 
 const port = process.env.PORT || 3123;
